@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { CreatePetition, Sidebar } from "./components";
+import { Outlet } from "react-router-dom";
 
 function App() {
-    const [count, setCount] = useState(0);
-
     return (
         <>
-            <h1 className="text-7xl">Test</h1>
+            <Sidebar />
+            <Outlet />
         </>
     );
 }
