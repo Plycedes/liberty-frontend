@@ -1,13 +1,42 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { connect } from "./utils/api";
+import { useState, useEffect } from "react";
 
 function Welcome() {
+    const navigate = useNavigate();
+    const [account, setAccount] = useState(localStorage.getItem("account"));
+
+    const connectMetamask = async () => {
+        const account = await connect();
+        localStorage.setItem("account", account);
+        navigate("app/");
+    };
+
+    useEffect(() => {
+        window.ethereum.on("accountsChanged", accountWasChanged);
+    });
+    useEffect(() => {}, [account]);
+
+    const accountWasChanged = (accounts) => {
+        setAccount(accounts[0]);
+        if (accounts[0] === undefined) {
+            localStorage.setItem("account", "");
+        } else {
+            localStorage.setItem("account", accounts[0]);
+        }
+    };
+
     return (
         <div>
-            Welcome
-            <Link to="app/">
-                <button>Go to Home</button>
-            </Link>
+            {localStorage.getItem("account") ? (
+                <h1>Welcome {localStorage.getItem("account")}</h1>
+            ) : (
+                <div>
+                    <h1>Connect to continue</h1>
+                    <button onClick={connectMetamask}>Connect</button>
+                </div>
+            )}
         </div>
     );
 }
