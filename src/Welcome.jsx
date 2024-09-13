@@ -60,6 +60,15 @@ function Welcome() {
                                 <p className="text-white text-2xl">
                                     Mr. {localStorage.getItem("account").substring(0, 10)}
                                 </p>
+                                <button
+                                    className="bg-purple-700 mt-3 text-white px-4 py-2 rounded hover:bg-purple-800 focus:outline-none text-xl"
+                                    onClick={() => {
+                                        navigate("app/");
+                                    }}
+                                >
+                                    Continue
+                                    <span class="ml-2">→</span>
+                                </button>
                             </div>
                         ) : (
                             <div className="text-white">
