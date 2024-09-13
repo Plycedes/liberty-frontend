@@ -30,9 +30,9 @@ function Welcome() {
     return (
         <div>
             {localStorage.getItem("account") ? (
-                <h1>Welcome {localStorage.getItem("account")}</h1>
+                <h1 className="text-white">Welcome {localStorage.getItem("account")}</h1>
             ) : (
-                <div>
+                <div className="text-white">
                     <h1>Connect to continue</h1>
                     <button onClick={connectMetamask}>Connect</button>
                 </div>
