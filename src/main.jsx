@@ -10,7 +10,7 @@ import {
     RouterProvider,
     Route,
 } from "react-router-dom";
-import { Dashboard, CreatePetition } from "./components";
+import { Dashboard, CreatePetition, Profile, Leaderboard } from "./components";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -19,6 +19,8 @@ const router = createBrowserRouter(
             <Route path="app/" element={<App />}>
                 <Route path="" element={<Dashboard />} />
                 <Route path="create-petition" element={<CreatePetition />} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="leaderboard" element={<Leaderboard />} />
             </Route>
         </Route>
     )
