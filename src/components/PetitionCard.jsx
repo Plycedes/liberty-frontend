@@ -5,7 +5,7 @@ function PetitionCard({ petition, index }) {
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
                 <img
-                    className="rounded-t-lg w-full h-[240px]"
+                    className="rounded-t-lg w-full h-[220px]"
                     src="https://i0.wp.com/jcpa.org/wp-content/uploads/2024/05/Election.png?fit=1280%2C720&ssl=1&resize=900%2C506.25"
                     alt="Campaign Image"
                 />
