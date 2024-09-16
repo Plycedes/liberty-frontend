@@ -6,24 +6,24 @@ function PetitionCard({ petition, index }) {
             <a href="#">
                 <img
                     className="rounded-t-lg w-full h-[220px]"
-                    src="https://i0.wp.com/jcpa.org/wp-content/uploads/2024/05/Election.png?fit=1280%2C720&ssl=1&resize=900%2C506.25"
+                    src={petition.image}
                     alt="Campaign Image"
                 />
             </a>
             <div className="p-5">
                 <a href="#">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                        Card1
+                        {petition.title}
                     </h5>
                 </a>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Description sdjafh asklfyhwenc asdus asofha f asdjsaji fha sdj
+                    {petition.description}
                 </p>
                 <button
-                    className="text-white bg-orange-700 rounded-lg pb-2 pl-2 pr-2 pt-1"
+                    className="text-white font-semibold bg-purple-600 rounded-lg pb-2 pl-2 pr-2 pt-2"
                     onClick={() => knowMore()}
                 >
-                    Know more
+                    {`Know More ->`}
                 </button>
             </div>
         </div>
