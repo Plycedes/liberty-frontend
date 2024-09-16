@@ -1,23 +1,6 @@
-export const contractAddress = "0x7Dfea4e6F2577062ec028CBBE6736B96fd898f1A";
+export const contractAddress = "0xE21D2373D16E98Bd60676b58DA7742D13EaeE436";
 
 export const ABI = [
-    {
-        anonymous: false,
-        inputs: [
-            { indexed: false, internalType: "uint256", name: "numberOfPetitons", type: "uint256" },
-        ],
-        name: "PetitionAdded",
-        type: "event",
-    },
-    {
-        anonymous: false,
-        inputs: [
-            { indexed: false, internalType: "uint256", name: "numberOfVoters", type: "uint256" },
-            { indexed: false, internalType: "address[]", name: "voters", type: "address[]" },
-        ],
-        name: "VoteCasted",
-        type: "event",
-    },
     {
         inputs: [
             { internalType: "address", name: "_owner", type: "address" },
@@ -26,7 +9,7 @@ export const ABI = [
             { internalType: "string", name: "_image", type: "string" },
         ],
         name: "createPetition",
-        outputs: [],
+        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
         stateMutability: "nonpayable",
         type: "function",
     },
@@ -52,6 +35,13 @@ export const ABI = [
         type: "function",
     },
     {
+        inputs: [{ internalType: "uint256", name: "_id", type: "uint256" }],
+        name: "getVoters",
+        outputs: [{ internalType: "address[]", name: "", type: "address[]" }],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
         inputs: [],
         name: "numberOfPetitions",
         outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
@@ -60,7 +50,7 @@ export const ABI = [
     },
     {
         inputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-        name: "petitons",
+        name: "petitions",
         outputs: [
             { internalType: "address", name: "owner", type: "address" },
             { internalType: "string", name: "title", type: "string" },
