@@ -25,12 +25,17 @@ export const createPetition = async (owner, title, description, image) => {
         signer = await provider.getSigner();
         const contract = new ethers.Contract(contractAddress, ABI, signer);
         console.log("Mining");
-        const tx = await contract.createCampaign(owner, title, description, image);
+        const tx = await contract.createPetition(owner, title, description, image);
         const tr = await tx.wait();
-        console.log(tr);
+        console.log(tr.logs[0].args[0]);
         console.log("Complete");
     } catch (error) {
         console.log(error);
         throw error;
     }
+};
+
+export const getPetitions = async () => {
+    provider = new ethers.BrowserProvider(window.ethereum);
+    signer = await provider.getSigner();
 };

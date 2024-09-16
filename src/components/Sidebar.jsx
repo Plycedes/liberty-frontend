@@ -22,14 +22,14 @@ function Sidebar() {
 
     return (
         <div className="flex">
-            <div class="w-64 bg-transparent text-white h-screen p-4">
+            <div className="w-64 bg-transparent text-white h-screen p-4">
                 <div className="h-1/6">
                     <div className="flex mx-2">
                         <img
                             className="w-10 h-10"
                             src="https://res.cloudinary.com/dxsffcg6l/image/upload/fl_preserve_transparency/v1725359793/image_2024-09-03_160517898-removebg-preview_f8tzed.jpg?_s=public-apps"
                         />
-                        <h1 class="text-4xl font-bold mx-4">
+                        <h1 className="text-4xl font-bold mx-4">
                             L<b className="text-purple-500">!</b>berty
                         </h1>
                     </div>
@@ -46,7 +46,7 @@ function Sidebar() {
                 </div>
                 <div className="h-5/6 pb-5 pt-1">
                     <div className="rounded bg-[#414264] p-2 mt-5 h-full">
-                        <ul class="text-xl my-1">
+                        <ul className="text-xl my-1">
                             <li>
                                 <NavLink to="">
                                     <div className="block py-2 px-4 hover:bg-gray-700 rounded">
@@ -86,13 +86,13 @@ function Sidebar() {
                                     </div>
                                 </NavLink>
                             </li>
-                            <l1>
+                            <li>
                                 <hr className="my-3 border-t-2 border-gray-400" />
-                            </l1>
-                            <l1>
+                            </li>
+                            <li>
                                 <div className="my-6">
                                     <input
-                                        className="block py-2 px-4 bg-gray-500 rounded w-full"
+                                        className="block py-2 px-4 bg-gray-600 rounded w-full"
                                         placeholder="Petition Name"
                                     />
                                     <button
@@ -100,10 +100,10 @@ function Sidebar() {
                                         onClick={() => {}}
                                     >
                                         Search
-                                        <span class="ml-2">→</span>
+                                        <span className="ml-2">→</span>
                                     </button>
                                 </div>
-                            </l1>
+                            </li>
                         </ul>
                     </div>
                 </div>
