@@ -39,9 +39,20 @@ export const getPetitions = async () => {
         provider = new ethers.BrowserProvider(window.ethereum);
         signer = await provider.getSigner();
         const contract = new ethers.Contract(contractAddress, ABI, signer);
-        console.log("Mining");
+        console.log("Getting all petitions");
         const tx = await contract.getPetitions();
-        console.log(tx[0].owner);
+        console.log("Complete");
+
+        const petitions = tx.map((petition, i) => ({
+            owner: petition.owner,
+            title: petition.title,
+            description: petition.description,
+            image: petition.image,
+            votes: Number(petition.votes),
+            pId: i,
+        }));
+
+        return petitions;
     } catch (error) {
         console.log(error);
     }
