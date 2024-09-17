@@ -13,14 +13,28 @@ function PetitionInfo() {
         setPetition(petitions[index]);
     }, []);
     return (
-        <div>
-            {petition && <h1>{petition.owner}</h1>}
-            <button
-                className="text-white font-semibold bg-purple-600 rounded-lg pb-2 pl-2 pr-2 pt-2"
-                onClick={() => navigate(-1)}
-            >
-                {`<- Back`}
-            </button>
+        <div className="text-white">
+            {petition ? (
+                <div className="">
+                    <h1>{petition.owner}</h1>
+                    <h1>{petition.title}</h1>
+                    <h1>{petition.description}</h1>
+                    <h1>{petition.votes}</h1>
+                    <button
+                        className="text-white font-semibold bg-purple-600 rounded-lg pb-2 pl-2 pr-2 pt-2"
+                        onClick={() => navigate(-1)}
+                    >
+                        {`<- Back`}
+                    </button>
+                </div>
+            ) : (
+                <button
+                    className="text-white font-semibold bg-purple-600 rounded-lg pb-2 pl-2 pr-2 pt-2"
+                    onClick={() => navigate(-1)}
+                >
+                    {`<- Back`}
+                </button>
+            )}
         </div>
     );
 }

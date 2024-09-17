@@ -30,7 +30,7 @@ function Welcome() {
     return (
         <div className="relative p-20">
             <div className="bg-cover bg-center bg-no-repeat bg-[url('https://slashtechtrends.com/wp-content/uploads/2024/05/new-the-future-of-blockchain-in-tech-2022-1-jpg.webp')] rounded-lg overflow-hidden h-250 w-250">
-                <div class="bg-gradient-to-r from-[#414264] via-[#414264] to-transparent p-10">
+                <div class="bg-gradient-to-r from-gray-800 via-gray-800 to-transparent p-10">
                     <h1 className="text-white text-7xl font-bold">
                         L<b className="text-purple-500">!</b>berty
                     </h1>
