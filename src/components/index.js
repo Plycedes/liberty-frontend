@@ -7,6 +7,7 @@ import PetitionCard from "./PetitionCard";
 import Help from "./Help";
 import ContactUs from "./ContactUs";
 import Loader from "./Loader";
+import PetitionInfo from "./PetitionInfo";
 
 export {
     CreatePetition,
@@ -18,4 +19,5 @@ export {
     Help,
     ContactUs,
     Loader,
+    PetitionInfo,
 };

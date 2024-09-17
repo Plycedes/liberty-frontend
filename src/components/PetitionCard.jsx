@@ -1,6 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-function PetitionCard({ petition, index }) {
+function PetitionCard({ petition }) {
+    const navigate = useNavigate();
+
+    const knowMore = () => {
+        navigate(`petition/${petition.pId}`);
+    };
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">

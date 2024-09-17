@@ -31,9 +31,9 @@ function Dashboard() {
                 <div>
                     {petitions ? (
                         <div className="grid grid-cols-3 gap-5 my-8 mx-3 2xl:grid-cols-4">
-                            {petitions.map((petition, i) => (
+                            {petitions.map((petition) => (
                                 <div key={petition.pId}>
-                                    <PetitionCard petition={petition} index={i} />
+                                    <PetitionCard petition={petition} />
                                 </div>
                             ))}
                         </div>

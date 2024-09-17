@@ -10,7 +10,15 @@ import {
     RouterProvider,
     Route,
 } from "react-router-dom";
-import { Dashboard, CreatePetition, Profile, Leaderboard, Help, ContactUs } from "./components";
+import {
+    Dashboard,
+    CreatePetition,
+    Profile,
+    Leaderboard,
+    Help,
+    ContactUs,
+    PetitionInfo,
+} from "./components";
 import { store } from "./app/store.js";
 import { Provider } from "react-redux";
 
@@ -25,6 +33,7 @@ const router = createBrowserRouter(
                 <Route path="leaderboard" element={<Leaderboard />} />
                 <Route path="help" element={<Help />} />
                 <Route path="contact-us" element={<ContactUs />} />
+                <Route path="petition/:index" element={<PetitionInfo />} />
             </Route>
         </Route>
     )
