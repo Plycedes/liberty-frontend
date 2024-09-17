@@ -5,7 +5,7 @@ const Loader = ({ text, loader = true }) => {
         <div className="fixed inset-0 z-10 h-screen bg-[rgba(0,0,0,0.7)] flex items-center justify-center flex-col">
             {loader ? (
                 <img
-                    src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/04de2e31234507.564a1d23645bf.gif"
+                    src="https://gamefundpartners.com/wp-content/uploads/2022/04/loading.gif"
                     alt="loader"
                     className="w-[100px] h-[100px] object-contain"
                 />

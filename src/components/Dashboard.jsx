@@ -25,7 +25,7 @@ function Dashboard() {
     }, []);
     return (
         <div className="my-5">
-            {loading && <Loader />}
+            {loading && <Loader text="Loading Petitons" />}
             <h1 className="text-3xl font-bold text-purple-500">All Petitions</h1>
             {window.ethereum ? (
                 <div>

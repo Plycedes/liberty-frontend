@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import { createPetition } from "../utils/api";
+import { Loader } from "../components";
 
 function CreatePetition() {
     const [owner, setOwner] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [imageURL, setImageURL] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const submitForm = async () => {
+        setLoading(true);
         try {
             await createPetition(owner, title, description, imageURL);
-        } catch (error) {}
+        } catch (error) {
+            console.log(error);
+        }
+        setLoading(false);
     };
     //[#414264]
     return (
         <div className="min-h-screen flex items-center justify-center text-white">
+            {loading && <Loader text="Creating a new petition, Please wait..." />}
             <div className="w-full max-w-lg p-6 bg-gray-800 border border-purple-500 rounded-lg shadow-md">
                 <h1 className="text-2xl font-semibold mb-4">Enter Petition Details</h1>
                 <form className="space-y-4">
