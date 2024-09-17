@@ -17,7 +17,7 @@ function PetitionCard({ petition, index }) {
                     </h5>
                 </a>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    {petition.description}
+                    {petition.description.substr(0, 45) + "..."}
                 </p>
                 <button
                     className="text-white font-semibold bg-purple-600 rounded-lg pb-2 pl-2 pr-2 pt-2"

@@ -19,7 +19,7 @@ function Sidebar() {
             localStorage.setItem("account", accounts[0]);
         }
     };
-
+    //[#414264]
     return (
         <div className="flex">
             <div className="w-64 bg-transparent text-white h-screen p-4">
@@ -33,7 +33,7 @@ function Sidebar() {
                             L<b className="text-purple-500">!</b>berty
                         </h1>
                     </div>
-                    <div className="rounded bg-[#414264] p-2 py-2 mt-5">
+                    <div className="rounded bg-gray-800 p-2 py-2 mt-5">
                         {account ? (
                             <div className="flex items-center">
                                 <Jazzicon diameter={40} seed={jsNumberForAddress(account)} />
@@ -45,7 +45,7 @@ function Sidebar() {
                     </div>
                 </div>
                 <div className="h-5/6 pb-5 pt-1">
-                    <div className="rounded bg-[#414264] p-2 mt-5 h-full">
+                    <div className="rounded bg-gray-800 p-2 mt-5 h-full">
                         <ul className="text-xl my-1">
                             <li>
                                 <NavLink to="">
@@ -76,6 +76,20 @@ function Sidebar() {
                                 </NavLink>
                             </li>
                             <li>
+                                <NavLink to="help">
+                                    <div className="block py-2 px-4 hover:bg-gray-700 rounded">
+                                        FAQ & Help
+                                    </div>
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="contact-us">
+                                    <div className="block py-2 px-4 hover:bg-gray-700 rounded">
+                                        Contact Us
+                                    </div>
+                                </NavLink>
+                            </li>
+                            <li>
                                 <NavLink
                                     onClick={() => {
                                         navigate("/");
@@ -92,7 +106,7 @@ function Sidebar() {
                             <li>
                                 <div className="my-6">
                                     <input
-                                        className="block py-2 px-4 bg-gray-600 rounded w-full"
+                                        className="block py-2 px-4 bg-gray-700 rounded w-full"
                                         placeholder="Petition Name"
                                     />
                                     <button

@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { PetitionCard } from "../components";
+import { PetitionCard, Loader } from "../components";
 import { getPetitions } from "../utils/api";
 import { useDispatch } from "react-redux";
 import { addPetitons } from "../features/petitionSlice";
 
 function Dashboard() {
     const [petitions, setPetitions] = useState([]);
+    const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
         (async () => {
-            const response = await getPetitions();
-            dispatch(addPetitons(response));
-            setPetitions(response);
+            try {
+                setLoading(true);
+                const response = await getPetitions();
+                dispatch(addPetitons(response));
+                setPetitions(response);
+                setLoading(false);
+            } catch (error) {
+                console.log(error);
+                setLoading(false);
+            }
         })();
     }, []);
     return (
         <div className="my-5">
+            {loading && <Loader />}
             <h1 className="text-3xl font-bold text-purple-500">All Petitions</h1>
             {window.ethereum ? (
                 <div>
