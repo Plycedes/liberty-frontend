@@ -24,10 +24,8 @@ export const createPetition = async (owner, title, description, image) => {
         provider = new ethers.BrowserProvider(window.ethereum);
         signer = await provider.getSigner();
         const contract = new ethers.Contract(contractAddress, ABI, signer);
-        console.log("Mining");
         const tx = await contract.createPetition(owner, title, description, image);
         const tr = await tx.wait();
-        console.log("Complete");
     } catch (error) {
         console.log(error);
         throw error;
@@ -39,9 +37,7 @@ export const getPetitions = async () => {
         provider = new ethers.BrowserProvider(window.ethereum);
         signer = await provider.getSigner();
         const contract = new ethers.Contract(contractAddress, ABI, signer);
-        console.log("Getting all petitions");
         const tx = await contract.getPetitions();
-        console.log("Complete");
 
         const petitions = tx.map((petition, i) => ({
             owner: petition.owner,
@@ -64,9 +60,7 @@ export const getVoters = async (index) => {
         provider = new ethers.BrowserProvider(window.ethereum);
         signer = await provider.getSigner();
         const contract = new ethers.Contract(contractAddress, ABI, signer);
-        console.log("Getting voters");
         const voters = await contract.getVoters(index);
-        console.log("Complete");
         return voters;
     } catch (error) {
         console.log(error);
@@ -78,10 +72,8 @@ export const vote = async (index) => {
         provider = new ethers.BrowserProvider(window.ethereum);
         signer = await provider.getSigner();
         const contract = new ethers.Contract(contractAddress, ABI, signer);
-        console.log("Voting");
         const tx = await contract.voteToPetition(index);
         await tx.wait();
-        console.log("Complete");
     } catch (error) {
         console.log(error);
     }

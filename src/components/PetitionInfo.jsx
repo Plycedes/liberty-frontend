@@ -3,12 +3,15 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Jazzicon, { jsNumberForAddress } from "react-jazzicon";
 import { getVoters, vote } from "../utils/api.js";
 import { Loader } from "../components";
+import { ethers } from "ethers";
 
 function PetitionInfo() {
     const { state } = useLocation();
+    const [account, setAccount] = useState(localStorage.getItem("account"));
     const [loading, setLoading] = useState(false);
     const [progress, setProgress] = useState(0);
     const [voters, setVoters] = useState([]);
+    const [voted, setVoted] = useState(true);
     const [upper, setUpper] = useState(10);
     const navigate = useNavigate();
     const { index } = useParams();
@@ -23,19 +26,20 @@ function PetitionInfo() {
     };
 
     useEffect(() => {
-        //console.log(petitions);
         calcProgress(state.votes);
+        setAccount(localStorage.getItem("account"));
     }, []);
 
     useEffect(() => {
         (async () => {
             const response = await getVoters(index);
             setVoters(response);
-            console.log(response);
         })();
     }, []);
 
-    useEffect(() => {}, [voters]);
+    useEffect(() => {
+        setVoted(voters.includes(ethers.getAddress(account)));
+    }, [voters]);
 
     const sign = async () => {
         try {
@@ -63,11 +67,9 @@ function PetitionInfo() {
                                 <h1 className="text-2xl text-purple-500 font-bold my-2">
                                     {state.title}
                                 </h1>
-                                <h1 className="text-gray-300 my-2">{state.description}</h1>
+                                <h1 className="text-gray-400 my-2">{state.description}</h1>
 
-                                <div className="mb-1 text-base font-medium text-purple-500">
-                                    Votes
-                                </div>
+                                <div className="mb-1 text-base text-lg text-purple-400">Votes</div>
                                 <div className="flex items-center gap-2">
                                     <div className="flex items-center justify-start w-full bg-gray-600 rounded-full h-4">
                                         <div
@@ -85,26 +87,36 @@ function PetitionInfo() {
                                     <h1>{upper}</h1>
                                 </div>
 
-                                <div className="flex my-3 gap-2 items-center">
+                                <div className="flex my-4 gap-2 items-center">
                                     <Jazzicon
                                         diameter={30}
                                         seed={jsNumberForAddress(String(state.owner))}
                                     />
-                                    <h1>{state.owner}</h1>
+                                    <h1 className="text-purple-200">
+                                        {ethers.getAddress(state.owner)}
+                                    </h1>
                                 </div>
 
-                                <button
-                                    className="text-white m-2 font-semibold bg-gray-600 hover:bg-gray-700 rounded-lg pb-2 pl-2 pr-2 pt-2"
-                                    onClick={() => navigate(-1)}
-                                >
-                                    {`<- Back`}
-                                </button>
-                                <button
-                                    className="text-white m-2 font-semibold bg-purple-600 hover:bg-purple-700 rounded-lg pb-2 pl-2 pr-2 pt-2"
-                                    onClick={() => sign()}
-                                >
-                                    Sign Petition
-                                </button>
+                                <div className="flex my-5 items-center gap-4">
+                                    <button
+                                        className="text-white font-semibold bg-gray-600 hover:bg-gray-700 rounded-lg pb-2 pl-2 pr-2 pt-2"
+                                        onClick={() => navigate(-1)}
+                                    >
+                                        {`<- Back`}
+                                    </button>
+                                    {voted ? (
+                                        <h1 className="text-lg font-semibold text-purple-300">
+                                            Already Signed
+                                        </h1>
+                                    ) : (
+                                        <button
+                                            className="text-white  font-semibold bg-purple-600 hover:bg-purple-700 rounded-lg pb-2 pl-2 pr-2 pt-2"
+                                            onClick={() => sign()}
+                                        >
+                                            Sign Petition
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -115,7 +127,25 @@ function PetitionInfo() {
                             </div>
                             <div className="flex justify-center">
                                 {voters.length > 0 ? (
-                                    <h1 className="">{voters[0]}</h1>
+                                    <div>
+                                        <ul>
+                                            {voters.map((voter, i) => (
+                                                <li
+                                                    className="flex gap-2 my-3 items-center text-purple-200"
+                                                    key={voter}
+                                                >
+                                                    <p className="mr-5 text-lg text-purple-400">
+                                                        {i + 1}.
+                                                    </p>
+                                                    <Jazzicon
+                                                        diameter={20}
+                                                        seed={jsNumberForAddress(String(voter))}
+                                                    />{" "}
+                                                    {voter}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
                                 ) : (
                                     <p>Signers will appear here</p>
                                 )}
