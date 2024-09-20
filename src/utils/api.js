@@ -55,5 +55,34 @@ export const getPetitions = async () => {
         return petitions;
     } catch (error) {
         console.log(error);
+        //throw error;
+    }
+};
+
+export const getVoters = async (index) => {
+    try {
+        provider = new ethers.BrowserProvider(window.ethereum);
+        signer = await provider.getSigner();
+        const contract = new ethers.Contract(contractAddress, ABI, signer);
+        console.log("Getting voters");
+        const voters = await contract.getVoters(index);
+        console.log("Complete");
+        return voters;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const vote = async (index) => {
+    try {
+        provider = new ethers.BrowserProvider(window.ethereum);
+        signer = await provider.getSigner();
+        const contract = new ethers.Contract(contractAddress, ABI, signer);
+        console.log("Voting");
+        const tx = await contract.voteToPetition(index);
+        await tx.wait();
+        console.log("Complete");
+    } catch (error) {
+        console.log(error);
     }
 };

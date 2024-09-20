@@ -5,7 +5,7 @@ function PetitionCard({ petition }) {
     const navigate = useNavigate();
 
     const knowMore = () => {
-        navigate(`petition/${petition.pId}`);
+        navigate(`petition/${petition.pId}`, { state: petition });
     };
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
