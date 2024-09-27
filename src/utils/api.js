@@ -84,8 +84,15 @@ export const getVotingHistory = async (account, petitions) => {
         provider = new ethers.BrowserProvider(window.ethereum);
         signer = await provider.getSigner();
         const contract = new ethers.Contract(contractAddress, ABI, signer);
+        let response = [];
         for (let i = 0; i < petitions.length; i++) {
-            const votes = await contract.getVoters(petitions[i].pId);
+            const voters = await contract.getVoters(petitions[i].pId);
+            if (voters.includes(ethers.getAddress(account))) {
+                response.push(petitions[i]);
+            }
         }
-    } catch (error) {}
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
 };
