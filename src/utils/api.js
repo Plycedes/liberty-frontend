@@ -96,3 +96,13 @@ export const getVotingHistory = async (account, petitions) => {
         console.log(error);
     }
 };
+
+export const getBalance = async (account) => {
+    try {
+        provider = new ethers.BrowserProvider(window.ethereum);
+        const balance = await provider.getBalance(account);
+        return ethers.formatEther(balance);
+    } catch (error) {
+        console.log(error);
+    }
+};

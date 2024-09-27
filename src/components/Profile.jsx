@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getPetitions, getVotingHistory } from "../utils/api.js";
-import { Loader } from "../components";
+import { getPetitions, getVotingHistory, getBalance } from "../utils/api.js";
+import { Loader, PetitionCard } from "../components";
 import { ethers } from "ethers";
 import Jazzicon, { jsNumberForAddress } from "react-jazzicon";
 
@@ -9,6 +9,7 @@ function Profile() {
     const [petitions, setPetitions] = useState([]);
     const [votedPetitons, setVotedPetitions] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [balance, setBalance] = useState(0);
     const [account, setAccount] = useState(localStorage.getItem("account"));
 
     useEffect(() => {
@@ -24,6 +25,8 @@ function Profile() {
                 );
                 const res = await getVotingHistory(account, response);
                 setVotedPetitions(res);
+                const bal = await getBalance(account);
+                setBalance(bal);
                 setLoading(false);
             } catch (error) {
                 console.log(error);
@@ -38,75 +41,70 @@ function Profile() {
             <div>
                 <div>
                     <div className="h-screen flex flex-col">
-                        <div className="flex flex-grow">
+                        <div className="flex h-1/2">
                             <div className="w-1/2 flex">
-                                <div className="w-full m-2 border rounded-lg shadow bg-gray-800 border border-purple-500">
-                                    <div className="m-3 mb-0 h-full">
-                                        <div className="my-5">
-                                            <h1 className="text-3xl font-semibold text-white">
+                                <div className="w-full m-2 p-3 border rounded-lg shadow bg-gray-800 border border-purple-500">
+                                    <div className="h-full">
+                                        <div className="">
+                                            <h1 className="text-2xl font-semibold text-purple-500">
                                                 Welcome!
                                             </h1>
                                         </div>
                                         <div>
                                             <div className="m-2 bg-gray-700 p-3 rounded-lg">
-                                                <h1 className="mb-3 text-xl text-white font-semibold">
+                                                <h1 className="mb-3 text-lg text-white font-semibold">
                                                     User Wallet Address:
                                                 </h1>
-                                                <div className="flex gap-3 my-2 items-center">
+                                                <div className="flex gap-3  items-center">
                                                     <Jazzicon
-                                                        diameter={50}
+                                                        diameter={30}
                                                         seed={jsNumberForAddress(String(account))}
                                                     />
-                                                    <h1 className="text-xl text-purple-200">
-                                                        {ethers.getAddress(account)}
+                                                    <h1 className="text-lg text-purple-200">
+                                                        {account}
                                                     </h1>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="mx-2 my-5 bg-gray-700 p-3 rounded-lg">
-                                            <h1 className="mb-3 text-purple-300 text-xl font-semibold">
+                                        <div className="mx-2 my-2 bg-gray-700 p-3 rounded-lg">
+                                            <h1 className="text-purple-300 text-lg font-semibold">
                                                 Account Stats:
                                             </h1>
                                             <div className="ml-2 text-gray-100">
-                                                <div className="flex gap-3 text-xl my-3 mt-5">
+                                                <div className="flex gap-3 text-lg mt-3 mb-2">
                                                     <img
                                                         src="https://img.icons8.com/?size=100&id=100819&format=png&color=FFFFFF"
-                                                        width={30}
-                                                        height={10}
+                                                        className="w-15 h-6"
                                                     />
-                                                    <h1 className="font-semibold">
+                                                    <h1 className="font-semibold text-lg text-gray-200">
                                                         Wallet Balance:
                                                     </h1>
+                                                    <h1 className="text-lg text-purple-300">
+                                                        {balance}
+                                                    </h1>
                                                 </div>
-                                                <div className="flex gap-3 my-4">
+                                                <div className="flex gap-3 mb-2">
                                                     <img
                                                         src="https://img.icons8.com/?size=100&id=uSWplRVhqqlS&format=png&color=FFFFFF"
-                                                        width={30}
-                                                        height={10}
+                                                        className="w-15 h-6"
                                                     />
-                                                    <h1 className="text-xl font-semibold">
+                                                    <h1 className="text-lg font-semibold text-gray-200">
                                                         Petitions Created:
                                                     </h1>
+                                                    <h1 className="text-lg text-purple-300">
+                                                        {petitions.length}
+                                                    </h1>
                                                 </div>
-                                                <div className="flex gap-3 my-4">
+                                                <div className="flex gap-3 items-center">
                                                     <img
                                                         src="https://img.icons8.com/?size=100&id=k1xXzD3NEvLF&format=png&color=FFFFFF"
-                                                        width={30}
-                                                        height={10}
+                                                        className="w-15 h-6"
                                                     />
-                                                    <h1 className="text-xl font-semibold">
+                                                    <h1 className="text-lg font-semibold text-gray-200">
                                                         Petitions Signed:
                                                     </h1>
-                                                    <h1>{votedPetitons.length}</h1>
-                                                </div>
-                                                <div className="flex gap-3 my-4">
-                                                    <img
-                                                        src="https://img.icons8.com/?size=100&id=Of3mVxVcK1jc&format=png&color=FFFFFF"
-                                                        width={30}
-                                                        height={10}
-                                                    />
-                                                    <h1 className="text-xl font-semibold">
-                                                        Total Signers:
+                                                    <h1 className="text-lg text-purple-300">
+                                                        {votedPetitons.length}
                                                     </h1>
                                                 </div>
                                             </div>
@@ -116,43 +114,68 @@ function Profile() {
                             </div>
 
                             <div className="w-1/2 flex">
-                                <div className="w-full m-2 border rounded-lg shadow bg-gray-800 border border-purple-500"></div>
+                                <div className="w-full m-2 p-3 border rounded-lg shadow bg-gray-800 border border-purple-500">
+                                    <div className="flex justify-center text-2xl text-purple-500 font-semibold">
+                                        Signed Petitions
+                                    </div>
+                                    <div className="flex h-full my-2 pb-10">
+                                        <div className="w-full h-full rounded-lg overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-purple-800 scrollbar-track-transparent">
+                                            {votedPetitons.length > 0 ? (
+                                                <div>
+                                                    <table className="table-fixed w-full">
+                                                        {votedPetitons.map((petition, index) => (
+                                                            <tr
+                                                                key={petition.pId}
+                                                                className="flex text-white"
+                                                            >
+                                                                {/* Index Column */}
+                                                                <td className="w-1/12 text-xl">
+                                                                    {index + 1}.
+                                                                </td>
+
+                                                                {/* Title Column */}
+                                                                <td className="w-5/12 text-xl ml-5">
+                                                                    <div className="overflow-hidden text-ellipsis whitespace-nowrap">
+                                                                        {petition.title}
+                                                                    </div>
+                                                                </td>
+
+                                                                {/* Description Column */}
+                                                                <td className="w-6/12 text-xl ml-5">
+                                                                    <div className="overflow-hidden text-ellipsis whitespace-nowrap">
+                                                                        {petition.description}
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        ))}
+                                                    </table>
+                                                </div>
+                                            ) : (
+                                                <div className="text-white">
+                                                    Signed Petitions will appear here
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="flex-grow flex">
-                            <div className="w-full m-2 border rounded-lg shadow bg-gray-800 border border-purple-500">
-                                <div className="flex gap-3 my-4">
-                                    <img
-                                        src="https://img.icons8.com/?size=100&id=Of3mVxVcK1jc&format=png&color=FFFFFF"
-                                        width={30}
-                                        height={10}
-                                    />
-                                    <h1 className="text-xl font-semibold">Total Signers:</h1>
+                        <div className="flex h-1/2 mb-4">
+                            <div className="w-full h-full m-2 p-2 pb-10 border rounded-lg shadow bg-gray-800 border border-purple-500">
+                                <div className="text-2xl mb-2 text-purple-500 font-semibold">
+                                    Deployed Petitions:
                                 </div>
-                                <div className="flex gap-3 my-4">
-                                    <img
-                                        src="https://img.icons8.com/?size=100&id=Of3mVxVcK1jc&format=png&color=FFFFFF"
-                                        width={30}
-                                        height={10}
-                                    />
-                                    <h1 className="text-xl font-semibold">Total Signers:</h1>
-                                </div>
-                                <div className="flex gap-3 my-4">
-                                    <img
-                                        src="https://img.icons8.com/?size=100&id=Of3mVxVcK1jc&format=png&color=FFFFFF"
-                                        width={30}
-                                        height={10}
-                                    />
-                                    <h1 className="text-xl font-semibold">Total Signers:</h1>
-                                </div>
-                                <div className="flex gap-3 my-4">
-                                    <img
-                                        src="https://img.icons8.com/?size=100&id=Of3mVxVcK1jc&format=png&color=FFFFFF"
-                                        width={30}
-                                        height={10}
-                                    />
-                                    <h1 className="text-xl font-semibold">Total Signers:</h1>
+                                <div className="w-full h-full overflow-x-scroll scrollbar-thin scrollbar-thumb-purple-800 scrollbar-track-transparent">
+                                    {petitions.length > 0 ? (
+                                        <div>
+                                            {petitions.map((petition) => (
+                                                <div key={petition.pId}>petition</div>
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <div>petition</div>
+                                    )}
                                 </div>
                             </div>
                         </div>
