@@ -1,7 +1,22 @@
-import { CreatePetition, Sidebar } from "./components";
+import { Sidebar } from "./components";
 import { Outlet } from "react-router-dom";
+import { getPetitions } from "./utils/api";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addPetitons } from "./features/petitionSlice";
 
 function App() {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await getPetitions();
+                dispatch(addPetitons(response));
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, []);
     return (
         <>
             <div className="flex">

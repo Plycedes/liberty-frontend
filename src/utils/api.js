@@ -78,3 +78,14 @@ export const vote = async (index) => {
         console.log(error);
     }
 };
+
+export const getVotingHistory = async (account, petitions) => {
+    try {
+        provider = new ethers.BrowserProvider(window.ethereum);
+        signer = await provider.getSigner();
+        const contract = new ethers.Contract(contractAddress, ABI, signer);
+        for (let i = 0; i < petitions.length; i++) {
+            const votes = await contract.getVoters(petitions[i].pId);
+        }
+    } catch (error) {}
+};

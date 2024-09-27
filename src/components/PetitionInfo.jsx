@@ -125,7 +125,7 @@ function PetitionInfo() {
                             <div className="flex justify-center m-3">
                                 <h1 className="text-xl text-purple-500 font-semibold">Signers</h1>
                             </div>
-                            <div className="flex justify-center">
+                            <div className="flex justify-center overflow-y-scroll">
                                 {voters.length > 0 ? (
                                     <div>
                                         <ul>
