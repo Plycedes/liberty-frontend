@@ -8,6 +8,7 @@ import Help from "./Help";
 import ContactUs from "./ContactUs";
 import Loader from "./Loader";
 import PetitionInfo from "./PetitionInfo";
+import MiniCard from "./MiniCard";
 
 export {
     CreatePetition,
@@ -20,4 +21,5 @@ export {
     ContactUs,
     Loader,
     PetitionInfo,
+    MiniCard,
 };

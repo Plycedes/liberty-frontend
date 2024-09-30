@@ -1,17 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function PetitionCard({ petition, height = 220 }) {
+function PetitionCard({ petition }) {
     const navigate = useNavigate();
 
     const knowMore = () => {
         navigate(`petition/${petition.pId}`, { state: petition });
     };
     return (
-        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className="max-w-sm bg-gray-800 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
                 <img
-                    className={`rounded-t-lg w-full h-[${height}px]`}
+                    className={`rounded-t-lg w-full h-[220px]`}
                     src={petition.image}
                     alt="Campaign Image"
                 />

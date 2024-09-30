@@ -55,8 +55,8 @@ function PetitionInfo() {
         <div className="text-white">
             {loading && <Loader />}
             {state ? (
-                <div className="flex w-full h-screen items-center">
-                    <div className="w-1/2 flex justify-center">
+                <div className="flex w-full h-screen items-center py-2">
+                    <div className="w-1/2 h-full flex justify-center">
                         <div className="w-full m-3 border rounded-lg shadow bg-gray-800 border border-purple-500">
                             <img
                                 className="rounded-t-lg w-full h-[320px]"
@@ -64,10 +64,10 @@ function PetitionInfo() {
                                 alt="Campaign Image"
                             />
                             <div className="m-3">
-                                <h1 className="text-2xl text-purple-500 font-bold my-2">
+                                <h1 className="text-3xl text-purple-500 font-bold my-2">
                                     {state.title}
                                 </h1>
-                                <h1 className="text-gray-400 my-2">{state.description}</h1>
+                                <h1 className="text-gray-400 text-lg my-2">{state.description}</h1>
 
                                 <div className="mb-1 text-base text-lg text-purple-400">Votes</div>
                                 <div className="flex items-center gap-2">
@@ -120,12 +120,12 @@ function PetitionInfo() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-1/2 flex min-h-[611px]">
-                        <div className="w-full m-3 border rounded-lg shadow bg-gray-800 border border-purple-500">
+                    <div className="w-1/2 py-2 flex h-screen">
+                        <div className="w-full m-3 pb-14 border rounded-lg shadow bg-gray-800 border border-purple-500">
                             <div className="flex justify-center m-3">
                                 <h1 className="text-xl text-purple-500 font-semibold">Signers</h1>
                             </div>
-                            <div className="flex justify-center overflow-y-scroll">
+                            <div className="flex w-full h-full justify-center overflow-y-scroll scrollbar-thin scrollbar-thumb-purple-800 scrollbar-track-transparent">
                                 {voters.length > 0 ? (
                                     <div>
                                         <ul>
@@ -134,7 +134,7 @@ function PetitionInfo() {
                                                     className="flex gap-2 my-3 items-center text-purple-200"
                                                     key={voter}
                                                 >
-                                                    <p className="mr-5 text-lg text-purple-400">
+                                                    <p className="mr-10 text-lg text-purple-400">
                                                         {i + 1}.
                                                     </p>
                                                     <Jazzicon
