@@ -99,10 +99,14 @@ function PetitionInfo() {
 
                                 <div className="flex my-5 items-center gap-4">
                                     <button
-                                        className="text-white font-semibold bg-gray-600 hover:bg-gray-700 rounded-lg pb-2 pl-2 pr-2 pt-2"
+                                        className="flex gap-1 text-white font-semibold bg-gray-600 hover:bg-gray-700 rounded-lg pb-2 pl-2 pr-2 pt-2"
                                         onClick={() => navigate(-1)}
                                     >
-                                        {`<- Back`}
+                                        <img
+                                            src="https://img.icons8.com/?size=100&id=7811&format=png&color=FFFFFF"
+                                            className="w-15 h-6 mt-0.3"
+                                        />
+                                        Back
                                     </button>
                                     {voted ? (
                                         <h1 className="text-lg font-semibold text-purple-300">
@@ -155,10 +159,14 @@ function PetitionInfo() {
                 </div>
             ) : (
                 <button
-                    className="text-white font-semibold bg-purple-600 rounded-lg pb-2 pl-2 pr-2 pt-2"
+                    className="flex gap-1 text-white font-semibold bg-purple-600 rounded-lg pb-2 pl-2 pr-2 pt-2"
                     onClick={() => navigate(-1)}
                 >
-                    {`<- Back`}
+                    <img
+                        src="https://img.icons8.com/?size=100&id=7811&format=png&color=FFFFFF"
+                        className="w-15 h-6 mt-1"
+                    />
+                    Back
                 </button>
             )}
         </div>

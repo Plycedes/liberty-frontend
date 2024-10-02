@@ -26,10 +26,14 @@ function PetitionCard({ petition }) {
                     {petition.description.substr(0, 45) + "..."}
                 </p>
                 <button
-                    className="text-white font-semibold bg-purple-600 rounded-lg pb-2 pl-2 pr-2 pt-2"
+                    className="flex gap-1 text-white font-semibold bg-purple-600 rounded-lg pb-2 pl-2 pr-2 pt-2"
                     onClick={() => knowMore()}
                 >
-                    {`Know More ->`}
+                    Know More
+                    <img
+                        src="https://img.icons8.com/?size=100&id=7789&format=png&color=FFFFFF"
+                        className="w-15 h-6 mt-0.2"
+                    />
                 </button>
             </div>
         </div>

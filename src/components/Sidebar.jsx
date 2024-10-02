@@ -110,11 +110,14 @@ function Sidebar() {
                                         placeholder="Petition Name"
                                     />
                                     <button
-                                        className="bg-purple-700 mt-3 w-full text-white px-4 py-2 rounded hover:bg-purple-800 focus:outline-none text-xl"
+                                        className="flex items-center justify-center gap-1 bg-purple-700 mt-3 w-full text-white py-2 rounded hover:bg-purple-800 focus:outline-none text-xl"
                                         onClick={() => {}}
                                     >
                                         Search
-                                        <span className="ml-2">→</span>
+                                        <img
+                                            src="https://img.icons8.com/?size=100&id=7789&format=png&color=FFFFFF"
+                                            className="w-15 h-6 mt-1"
+                                        />
                                     </button>
                                 </div>
                             </li>
