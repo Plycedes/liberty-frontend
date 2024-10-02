@@ -169,8 +169,8 @@ function Profile() {
                                                     </table>
                                                 </div>
                                             ) : (
-                                                <div className="text-white">
-                                                    Signed Petitions will appear here
+                                                <div className="w-full h-full  flex justify-center items-center text-3xl text-gray-500">
+                                                    Nothing to show {":("}
                                                 </div>
                                             )}
                                         </div>
@@ -194,7 +194,9 @@ function Profile() {
                                             ))}
                                         </div>
                                     ) : (
-                                        <div>petition</div>
+                                        <div className="w-full flex justify-center items-center text-3xl text-gray-500">
+                                            Nothing to show {":("}
+                                        </div>
                                     )}
                                 </div>
                             </div>

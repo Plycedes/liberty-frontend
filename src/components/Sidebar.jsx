@@ -121,7 +121,7 @@ function Sidebar() {
                                 >
                                     <div className="flex gap-2 items-center block py-2 px-4 hover:bg-gray-700 rounded">
                                         <img
-                                            src="https://img.icons8.com/?size=100&id=7811&format=png&color=FFFFFF"
+                                            src="https://img.icons8.com/?size=100&id=MwshWpYc0tcg&format=png&color=FFFFFF"
                                             className="w-15 h-6"
                                         />
                                         Back
