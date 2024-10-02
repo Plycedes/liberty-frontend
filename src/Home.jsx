@@ -6,7 +6,7 @@ function Home() {
     return (
         <>
             {!window.ethereum ? (
-                <Loader text="Install Meamask to access this site" loader={false} />
+                <Loader text="Install Metamask to access this site" loader={false} />
             ) : (
                 <Outlet />
             )}

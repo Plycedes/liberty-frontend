@@ -49,42 +49,66 @@ function Sidebar() {
                         <ul className="text-xl my-1">
                             <li>
                                 <NavLink to="">
-                                    <div className="block py-2 px-4 hover:bg-gray-700 rounded">
+                                    <div className="flex gap-2 items-center block py-2 px-4 hover:bg-gray-700 rounded">
+                                        <img
+                                            src="https://img.icons8.com/?size=100&id=2797&format=png&color=FFFFFF"
+                                            className="w-15 h-6"
+                                        />
                                         Dashboard
                                     </div>
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to="create-petition">
-                                    <div className="block py-2 px-4 hover:bg-gray-700 rounded">
+                                    <div className="flex gap-2 items-center block py-2 px-4 hover:bg-gray-700 rounded">
+                                        <img
+                                            src="https://img.icons8.com/?size=100&id=uSWplRVhqqlS&format=png&color=FFFFFF"
+                                            className="w-15 h-6"
+                                        />
                                         Create Petition
                                     </div>
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to="profile">
-                                    <div className="block py-2 px-4 hover:bg-gray-700 rounded">
+                                    <div className="flex gap-2 items-center block py-2 px-4 hover:bg-gray-700 rounded">
+                                        <img
+                                            src="https://img.icons8.com/?size=100&id=Ib9FADThtmSf&format=png&color=FFFFFF"
+                                            className="w-15 h-6"
+                                        />
                                         Profile
                                     </div>
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to="leaderboard">
-                                    <div className="block py-2 px-4 hover:bg-gray-700 rounded">
+                                    <div className="flex gap-2 items-center block py-2 px-4 hover:bg-gray-700 rounded">
+                                        <img
+                                            src="https://img.icons8.com/?size=100&id=70624&format=png&color=FFFFFF"
+                                            className="w-15 h-6"
+                                        />
                                         Leaderboard
                                     </div>
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to="help">
-                                    <div className="block py-2 px-4 hover:bg-gray-700 rounded">
+                                    <div className="flex gap-2 items-center block pt-3 py-2 px-4 hover:bg-gray-700 rounded">
+                                        <img
+                                            src="https://img.icons8.com/?size=100&id=7775&format=png&color=FFFFFF"
+                                            className="w-15 h-6"
+                                        />
                                         FAQ & Help
                                     </div>
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to="contact-us">
-                                    <div className="block py-2 px-4 hover:bg-gray-700 rounded">
+                                    <div className="flex gap-2 items-center block pt-3 py-2 px-4 hover:bg-gray-700 rounded">
+                                        <img
+                                            src="https://img.icons8.com/?size=100&id=2848&format=png&color=FFFFFF"
+                                            className="w-15 h-6"
+                                        />
                                         Contact Us
                                     </div>
                                 </NavLink>
@@ -95,7 +119,11 @@ function Sidebar() {
                                         navigate("/");
                                     }}
                                 >
-                                    <div className="block py-2 px-4 hover:bg-gray-700 rounded">
+                                    <div className="flex gap-2 items-center block py-2 px-4 hover:bg-gray-700 rounded">
+                                        <img
+                                            src="https://img.icons8.com/?size=100&id=7811&format=png&color=FFFFFF"
+                                            className="w-15 h-6"
+                                        />
                                         Back
                                     </div>
                                 </NavLink>
