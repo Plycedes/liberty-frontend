@@ -1,10 +1,15 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import { Loader } from "./components";
 
 function Home() {
     return (
         <>
-            <Outlet />
+            {!window.ethereum ? (
+                <Loader text="Install Meamask to access this site" loader={false} />
+            ) : (
+                <Outlet />
+            )}
         </>
     );
 }
