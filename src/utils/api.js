@@ -106,3 +106,26 @@ export const getBalance = async (account) => {
         console.log(error);
     }
 };
+
+export const getLeaderboard = async () => {
+    try {
+        provider = new ethers.BrowserProvider(window.ethereum);
+        signer = await provider.getSigner();
+        const contract = new ethers.Contract(contractAddress, ABI, signer);
+        const tx = await contract.getPetitions();
+
+        const petitions = tx.map((petition, i) => ({
+            owner: petition.owner,
+            title: petition.title,
+            description: petition.description,
+            image: petition.image,
+            votes: Number(petition.votes),
+            pId: i,
+        }));
+
+        petitions.sort((a, b) => b.votes - a.votes);
+        return petitions;
+    } catch (error) {
+        console.log(error);
+    }
+};
