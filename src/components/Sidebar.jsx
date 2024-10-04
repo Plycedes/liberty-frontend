@@ -37,7 +37,9 @@ function Sidebar() {
                         {account ? (
                             <div className="flex items-center">
                                 <Jazzicon diameter={40} seed={jsNumberForAddress(account)} />
-                                <p className="text-xl ml-3">{account.substring(0, 12)}</p>
+                                <p className="text-xl text-purple-300 ml-3">
+                                    {account.substring(0, 12)}
+                                </p>
                             </div>
                         ) : (
                             <h1 className="text-2xl">Not Connected...</h1>
