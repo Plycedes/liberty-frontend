@@ -82,7 +82,7 @@ function Leaderboard() {
                         <div className="flex w-full h-full px-10 py-20">
                             <div className="w-full h-full m-2 p-5 pb-10 border rounded-lg shadow bg-gray-800 border border-purple-500">
                                 <div className="flex justify-center text-2xl mb-2 ml-2 text-purple-500 font-semibold">
-                                    Deployed Petitions:
+                                    Top Petitions:
                                 </div>
                                 <div className="flex ml-2 w-full h-full overflow-y-scroll scrollbar-thin scrollbar-thumb-purple-800 scrollbar-track-transparent">
                                     {petitions.length > 0 ? (
